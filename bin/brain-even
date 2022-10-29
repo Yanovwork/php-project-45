@@ -30,7 +30,7 @@ function isAnswerNo(int $acceptedNumber): bool
         return true;
     } else {
         return false;
-    }    
+    }
 }
 #функция, которая определяет правильно ли ответил пользователь
 function exactAnswer(string $lowAcceptedUserResponse, int $acceptedNumber): bool
