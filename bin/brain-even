@@ -73,13 +73,15 @@ function parityCheck()
         $questionBeforeNumber = 'Question: ';
         $lineBeforeUserResponse = 'Your answer';
         $positiveResponse = 'Correct!';
-        $randomNumber = rand();
+        $randomNumber = rand(1, 99);
         out($questionBeforeNumber);
         line($randomNumber);
         $userResponse = prompt($lineBeforeUserResponse);
         $lowUserResponse = mb_strtolower($userResponse);
         $negativeResponse = "'" . $lowUserResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'" . rightAnswer($randomNumber) . "'" . ".\nLet's try again, " . $userName . "!";
-        if(exactAnswer($lowUserResponse, $randomNumber) == true) {
+        if($lowUserResponse == 'exit') {
+            return exit;
+        } elseif(exactAnswer($lowUserResponse, $randomNumber) == true) {
             $rightAnswersSum++; line($positiveResponse);
         } else {
             $rightAnswersSum = 0; line($negativeResponse);

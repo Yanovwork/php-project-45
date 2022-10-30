@@ -73,8 +73,11 @@ function arithmeticProgression()
         $outputOfProgression = arrayToString($randomProgression, $randomEliminatedNumber);
         line($outputOfProgression);
         $userResponse = prompt($lineBeforeUserResponse);
+        $lowUserResponse = strtolower($userResponse);
         $negativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'" . rightAnswerProgression($randomProgression, $randomEliminatedNumber) . "'" . ".\nLet's try again, " . $userName . "!";
-        if(correctnessOfUserResponse($userResponse, $randomProgression, $randomEliminatedNumber) == true) {
+        if($lowUserResponse == 'exit') {
+            return exit;
+        } elseif(correctnessOfUserResponse($userResponse, $randomProgression, $randomEliminatedNumber) == true) {
             $rightAnswersSum++; line($positiveResponse);
         } else {
             $rightAnswersSum = 0; line($negativeResponse);

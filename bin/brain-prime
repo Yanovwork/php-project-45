@@ -36,10 +36,9 @@ function ifAnswerNoPrime(int $acceptedNumber): bool
 #функция, которая определяет правильно ли ответил пользователь
 function answeredCorrectly(string $acceptedUserResponse, int $acceptedNumber): bool
 {
-    $lowUserResponse = strtolower($acceptedUserResponse);
-    if($lowUserResponse == 'yes') {
+    if($acceptedUserResponse == 'yes') {
         return ifAnswerYesPrime($acceptedNumber);
-    } elseif($lowUserResponse == 'no') {
+    } elseif($acceptedUserResponse == 'no') {
         return ifAnswerNoPrime($acceptedNumber);
     } else {
         return false;
@@ -76,8 +75,11 @@ function isItPrimeNumber()
         out($questionBeforeNumber);
         line($randomNumber);
         $userResponse = prompt($lineBeforeUserResponse);
+        $lowUserResponse = strtolower($userResponse);
         $negativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'" . rightAnswer($randomNumber) . "'" . ".\nLet's try again, " . $userName . "!";
-        if(answeredCorrectly($userResponse, $randomNumber) == true) {
+        if($lowUserResponse == 'exit') {
+            return exit;
+        } elseif(answeredCorrectly($lowUserResponse, $randomNumber) == true) {
             $rightAnswersSum++; line($positiveResponse);
         } else {
             $rightAnswersSum = 0; line($negativeResponse);
