@@ -33,11 +33,11 @@ function isAnswerNo(int $acceptedNumber): bool
     }
 }
 #функция, которая определяет правильно ли ответил пользователь
-function exactAnswer(string $lowAcceptedUserResponse, int $acceptedNumber): bool
+function exactAnswer(string $acceptedUserResponse, int $acceptedNumber): bool
 {
-    if($lowAcceptedUserResponse == 'yes') {
+    if($acceptedUserResponse == 'yes') {
         return isAnswerYes($acceptedNumber);
-    } elseif($lowAcceptedUserResponse == 'no') {
+    } elseif($acceptedUserResponse == 'no') {
         return isAnswerNo($acceptedNumber);
     } elseif($lowAcceptedUserResponse !== 'yes') {
         return false;
