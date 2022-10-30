@@ -1,4 +1,5 @@
 <?php
+
 namespace Hexlet\Code;
 
 require __DIR__ . '/../vendor/autoload.php';
