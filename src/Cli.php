@@ -1,7 +1,7 @@
 <?php
 namespace Hexlet\Code;
 
-require 'vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 use function cli\line;
 use function cli\prompt;
