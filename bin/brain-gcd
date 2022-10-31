@@ -5,16 +5,8 @@ use function cli\line;
 use function cli\prompt;
 use function cli\out;
 
-#функция которая определяет правильно ли ответил пользователь
-function userResponseGCD($accepsedUserResponce, int $firstAcceptedNumber, int $secondAcceptedNumber): bool
-{
-    $intAccepsedUserResponce = (int)$accepsedUserResponce;
-    if($intAccepsedUserResponce == gmp_gcd($firstAcceptedNumber, $secondAcceptedNumber)) {
-        return true;
-    } else {
-        return false;
-    }
-}
+require __DIR__ . '/../src/Games/brain-gcd-game.php';
+use function Src\Games\Brain\Gcd\Game\userResponseGCD;
 
 function greatestCommonDivisor()
 {
@@ -27,7 +19,7 @@ function greatestCommonDivisor()
     line($gameConditions);
     $wellDone = 'Congratulations, ' . $userName . '!';
     $rightAnswersSum = 0;
-    while($rightAnswersSum < 3) {
+    while ($rightAnswersSum < 3) {
         $questionBeforeTwoRandomNumber = 'Question: ';
         $lineBeforeUserResponse = 'Your answer';
         $positiveResponse = 'Correct!';
@@ -39,12 +31,14 @@ function greatestCommonDivisor()
         $userResponse = prompt($lineBeforeUserResponse);
         $lowUserResponse = strtolower($userResponse);
         $negativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'" . gmp_gcd($firstRandomNumber, $secondRandomNumber) . "'" . ".\nLet's try again, " . $userName . "!";
-        if($lowUserResponse == 'exit') {
+        if ($lowUserResponse == 'exit') {
             return exit;
-        } elseif(userResponseGCD($userResponse, $firstRandomNumber, $secondRandomNumber) == true) {
-            $rightAnswersSum++; line($positiveResponse);
+        } elseif (userResponseGCD($userResponse, $firstRandomNumber, $secondRandomNumber) == true) {
+            $rightAnswersSum++;
+            line($positiveResponse);
         } else {
-            $rightAnswersSum = 0; line($negativeResponse);
+            $rightAnswersSum = 0;
+            line($negativeResponse);
         }
     }
     return line($wellDone);

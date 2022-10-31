@@ -5,58 +5,12 @@ use function cli\line;
 use function cli\prompt;
 use function cli\out;
 
-#функция, которая определяет четное или нечетное число
-function evenOrOdd(int $acceptedNumber): bool
-{
-    if($acceptedNumber % 2 == 0) {
-        return true;
-    } else {
-        return false;
-    }
-}
-#функция, которая определяет правильный ли ответ 'yes'
-function isAnswerYes(int $acceptedNumber): bool
-{
-    if(evenOrOdd($acceptedNumber) == true) {
-        return true;
-    } else {
-        return false;
-    }
-}
-#функция, которая определяет правильный ли ответ 'no'
-function isAnswerNo(int $acceptedNumber): bool
-{
-    if(evenOrOdd($acceptedNumber) == false) {
-        return true;
-    } else {
-        return false;
-    }
-}
-#функция, которая определяет правильно ли ответил пользователь
-function exactAnswer(string $acceptedUserResponse, int $acceptedNumber): bool
-{
-    if($acceptedUserResponse == 'yes') {
-        return isAnswerYes($acceptedNumber);
-    } elseif($acceptedUserResponse == 'no') {
-        return isAnswerNo($acceptedNumber);
-    } elseif($lowAcceptedUserResponse !== 'yes') {
-        return false;
-    } elseif($lowAcceptedUserResponse !== 'no') {
-        return false;
-    }
-}
-
-#функция, которая определяет правильный ответ
-function rightAnswer(int $acceptedNumber)
-{
-    $rightAnswer = '';
-    if(isAnswerYes($acceptedNumber) == true) {
-        $rightAnswer = 'yes';
-    } elseif(isAnswerNo($acceptedNumber) == true) {
-        $rightAnswer = 'no';
-    }
-    return $rightAnswer;
-}
+require __DIR__ . '/../src/Games/brain-even-game.php';
+use function Src\Games\Brain\Even\Game\evenOrOdd;
+use function Src\Games\Brain\Even\Game\isAnswerYes;
+use function Src\Games\Brain\Even\Game\isAnswerNo;
+use function Src\Games\Brain\Even\Game\exactAnswer;
+use function Src\Games\Brain\Even\Game\rightAnswer;
 
 function parityCheck()
 {
@@ -69,7 +23,7 @@ function parityCheck()
     line($gameConditions);
     $wellDone = 'Congratulations, ' . $userName . '!';
     $rightAnswersSum = 0;
-    while($rightAnswersSum < 3) {
+    while ($rightAnswersSum < 3) {
         $questionBeforeNumber = 'Question: ';
         $lineBeforeUserResponse = 'Your answer';
         $positiveResponse = 'Correct!';
@@ -79,12 +33,14 @@ function parityCheck()
         $userResponse = prompt($lineBeforeUserResponse);
         $lowUserResponse = mb_strtolower($userResponse);
         $negativeResponse = "'" . $lowUserResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'" . rightAnswer($randomNumber) . "'" . ".\nLet's try again, " . $userName . "!";
-        if($lowUserResponse == 'exit') {
+        if ($lowUserResponse == 'exit') {
             return exit;
-        } elseif(exactAnswer($lowUserResponse, $randomNumber) == true) {
-            $rightAnswersSum++; line($positiveResponse);
+        } elseif (exactAnswer($lowUserResponse, $randomNumber) == true) {
+            $rightAnswersSum++;
+            line($positiveResponse);
         } else {
-            $rightAnswersSum = 0; line($negativeResponse);
+            $rightAnswersSum = 0;
+            line($negativeResponse);
         }
     }
     return line($wellDone);

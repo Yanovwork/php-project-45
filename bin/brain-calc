@@ -5,45 +5,13 @@ use function cli\line;
 use function cli\prompt;
 use function cli\out;
 
-#если сложение
-function ifPlusOperator(int $firstOperand, int $secondOperand): int
-{
-    $sumOfOperands = $firstOperand + $secondOperand;
-    return $sumOfOperands;
-}
-#если вычитаени
-function ifMinusOperator(int $firstOperand, int $secondOperand): int
-{
-    $differenceOfOperands = $firstOperand - $secondOperand;
-    return $differenceOfOperands;
-}
-#если умножение
-function ifMultiplicationOperator(int $firstOperand, int $secondOperand): int
-{
-    $multiplicationOfOperands = $firstOperand * $secondOperand;
-    return $multiplicationOfOperands;
-}
-#функция возвращает правильный ответ
-function correctResultOfOperation(int $firstOperand, int $secondOperand, string $acceptedRandomOperator): int
-{
-    if($acceptedRandomOperator == '+') {
-        return ifPlusOperator($firstOperand, $secondOperand);
-    } elseif($acceptedRandomOperator == '-') {
-        return ifMinusOperator($firstOperand, $secondOperand);
-    } elseif($acceptedRandomOperator == '*') {
-        return ifMultiplicationOperator($firstOperand, $secondOperand);
-    }
-}
-#функция, которая определяет правильно ли ответил пользователь
-function userResponse(int $firstOperand, int $secondOperand, string $acceptedRandomOperator, $userResponse): bool
-{
-    $userResponseInt = (int)$userResponse;
-    if(correctResultOfOperation($firstOperand, $secondOperand, $acceptedRandomOperator) == $userResponseInt) {
-        return true;
-    } else {
-        return false;
-    }
-}
+require __DIR__ . '/../src/Games/brain-calc-game.php';
+use function Src\Games\Brain\Calc\Game\ifPlusOperator;
+use function Src\Games\Brain\Calc\Game\ifMinusOperator;
+use function Src\Games\Brain\Calc\Game\ifMultiplicationOperator;
+use function Src\Games\Brain\Calc\Game\correctResultOfOperation;
+use function Src\Games\Brain\Calc\Game\userResponse;
+
 
 function calculator()
 {
@@ -56,7 +24,7 @@ function calculator()
     line($gameConditions);
     $wellDone = 'Congratulations, ' . $userName . '!';
     $rightAnswersSum = 0;
-    while($rightAnswersSum < 3) {
+    while ($rightAnswersSum < 3) {
         $questionBeforeOperation = 'Question: ';
         $lineBeforeUserResponse = 'Your answer';
         $positiveResponse = 'Correct!';
@@ -71,12 +39,14 @@ function calculator()
         $userResponse = prompt($lineBeforeUserResponse);
         $lowUserResponse = strtolower($userResponse);
         $negativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'" . correctResultOfOperation($firstRandomOperand, $secondRandomOperand, $randomOperator) . "'" . ".\nLet's try again, " . $userName . "!";
-        if($lowUserResponse == 'exit') {
+        if ($lowUserResponse == 'exit') {
             return exit;
-        } elseif(userResponse($firstRandomOperand, $secondRandomOperand, $randomOperator, $userResponse) == true) {
-            $rightAnswersSum++; line($positiveResponse);
+        } elseif (userResponse($firstRandomOperand, $secondRandomOperand, $randomOperator, $userResponse) == true) {
+            $rightAnswersSum++;
+            line($positiveResponse);
         } else {
-            $rightAnswersSum = 0; line($negativeResponse);
+            $rightAnswersSum = 0;
+            line($negativeResponse);
         }
     }
     return line($wellDone);

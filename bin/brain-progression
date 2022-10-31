@@ -5,51 +5,12 @@ use function cli\line;
 use function cli\prompt;
 use function cli\out;
 
-#функция, которая генерирует нужный массив
-function generatingProgression(int $acceptedMaximumArrayLength, int $acceptedNumberOfCorrectAnswers): array
-{
-    $proposedArray = [];
-    $firstRandomNumberAccepted = rand(0, 99);
-    $randomLongArray = rand(5, $acceptedMaximumArrayLength);
-    if($acceptedNumberOfCorrectAnswers == 0) {
-        for($i = $firstRandomNumberAccepted; count($proposedArray) <= $randomLongArray; $i += 2) {
-            $proposedArray[] = $i;
-        }
-    } elseif ($acceptedNumberOfCorrectAnswers == 1) {
-        for($i = $firstRandomNumberAccepted; count($proposedArray) <= $randomLongArray; $i += 3) {
-            $proposedArray[] = $i;
-        }
-    } elseif ($acceptedNumberOfCorrectAnswers == 2) {
-        for($i = $firstRandomNumberAccepted; count($proposedArray) <= $randomLongArray; $i += 5) {
-            $proposedArray[] = $i;
-        }
-    } 
-    return $proposedArray;
-}
-#функция, которая определяет правильно ли ответил пользователь
-function correctnessOfUserResponse($acceptedUserResponse, array $receivedArray, int $numberOfSelectedItem): bool
-{
-    $intUserResponse = (int)$acceptedUserResponse;
-    if($receivedArray[$numberOfSelectedItem] == $intUserResponse){
-        return true;
-    } else {
-        return false;
-    }
-}
-#функция, которая переводит массив в строку
-function arrayToString(array $receivedArray, int $numberOfSelectedItem): string 
-{
-    $receivedArray[$numberOfSelectedItem] = '..';
-    $arrayInString = implode(' ', $receivedArray);
-    return $arrayInString;
-}
+require __DIR__ . '/../src/Games/brain-progression-game.php';
+use function Src\Games\Brain\Progression\Game\generatingProgression;
+use function Src\Games\Brain\Progression\Game\correctnessOfUserResponse;
+use function Src\Games\Brain\Progression\Game\arrayToString;
+use function Src\Games\Brain\Progression\Game\rightAnswerProgression;
 
-#функция, которая определяет верный ответ
-function rightAnswerProgression(array $receivedArray, int $numberOfSelectedItem): int
-{
-    $rightAnswers = $receivedArray[$numberOfSelectedItem];
-    return $rightAnswers;
-}
 
 function arithmeticProgression()
 {
@@ -62,7 +23,7 @@ function arithmeticProgression()
     line($gameConditions);
     $wellDone = 'Congratulations, ' . $userName . '!';
     $rightAnswersSum = 0;
-    while($rightAnswersSum < 3) {
+    while ($rightAnswersSum < 3) {
         $questionBeforeOperation = 'Question: ';
         $lineBeforeUserResponse = 'Your answer';
         $positiveResponse = 'Correct!';
@@ -75,12 +36,14 @@ function arithmeticProgression()
         $userResponse = prompt($lineBeforeUserResponse);
         $lowUserResponse = strtolower($userResponse);
         $negativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'" . rightAnswerProgression($randomProgression, $randomEliminatedNumber) . "'" . ".\nLet's try again, " . $userName . "!";
-        if($lowUserResponse == 'exit') {
+        if ($lowUserResponse == 'exit') {
             return exit;
-        } elseif(correctnessOfUserResponse($userResponse, $randomProgression, $randomEliminatedNumber) == true) {
-            $rightAnswersSum++; line($positiveResponse);
+        } elseif (correctnessOfUserResponse($userResponse, $randomProgression, $randomEliminatedNumber) == true) {
+            $rightAnswersSum++;
+            line($positiveResponse);
         } else {
-            $rightAnswersSum = 0; line($negativeResponse);
+            $rightAnswersSum = 0;
+            line($negativeResponse);
         }
     }
     return line($wellDone);
