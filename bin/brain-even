@@ -39,8 +39,8 @@ function parityCheck()
             $rightAnswersSum++;
             line($positiveResponse);
         } else {
-            $rightAnswersSum = 0;
             line($negativeResponse);
+            exit;
         }
     }
     return line($wellDone);
