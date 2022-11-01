@@ -35,9 +35,7 @@ function parityCheck()
         $userResponse = prompt($lineBeforeUserResponse);
         $lowUserResponse = mb_strtolower($userResponse);
         $negativeResponse = "'" . $lowUserResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'" . rightAnswer($randomNumber) . "'" . ".\nLet's try again, " . $userName . "!";
-        if ($lowUserResponse == 'exit') {
-            return exit;
-        } elseif (exactAnswer($lowUserResponse, $randomNumber) == true) {
+        if (exactAnswer($lowUserResponse, $randomNumber) == true) {
             $rightAnswersSum++;
             line($positiveResponse);
         } else {

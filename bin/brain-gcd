@@ -33,9 +33,7 @@ function greatestCommonDivisor()
         $userResponse = prompt($lineBeforeUserResponse);
         $lowUserResponse = strtolower($userResponse);
         $negativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'" . gmp_gcd($firstRandomNumber, $secondRandomNumber) . "'" . ".\nLet's try again, " . $userName . "!";
-        if ($lowUserResponse == 'exit') {
-            return exit;
-        } elseif (userResponseGCD($userResponse, $firstRandomNumber, $secondRandomNumber) == true) {
+        if (userResponseGCD($userResponse, $firstRandomNumber, $secondRandomNumber) == true) {
             $rightAnswersSum++;
             line($positiveResponse);
         } else {

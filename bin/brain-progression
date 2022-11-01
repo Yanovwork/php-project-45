@@ -38,9 +38,7 @@ function arithmeticProgression()
         $userResponse = prompt($lineBeforeUserResponse);
         $lowUserResponse = strtolower($userResponse);
         $negativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'" . rightAnswerProgression($randomProgression, $randomEliminatedNumber) . "'" . ".\nLet's try again, " . $userName . "!";
-        if ($lowUserResponse == 'exit') {
-            return exit;
-        } elseif (correctnessOfUserResponse($userResponse, $randomProgression, $randomEliminatedNumber) == true) {
+        if (correctnessOfUserResponse($userResponse, $randomProgression, $randomEliminatedNumber) == true) {
             $rightAnswersSum++;
             line($positiveResponse);
         } else {

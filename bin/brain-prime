@@ -35,9 +35,7 @@ function isItPrimeNumber()
         $userResponse = prompt($lineBeforeUserResponse);
         $lowUserResponse = strtolower($userResponse);
         $negativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'" . rightAnswer($randomNumber) . "'" . ".\nLet's try again, " . $userName . "!";
-        if ($lowUserResponse == 'exit') {
-            return exit;
-        } elseif (answeredCorrectly($lowUserResponse, $randomNumber) == true) {
+        if (answeredCorrectly($lowUserResponse, $randomNumber) == true) {
             $rightAnswersSum++;
             line($positiveResponse);
         } else {

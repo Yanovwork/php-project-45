@@ -41,9 +41,7 @@ function calculator()
         $userResponse = prompt($lineBeforeUserResponse);
         $lowUserResponse = strtolower($userResponse);
         $negativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'" . correctResultOfOperation($firstRandomOperand, $secondRandomOperand, $randomOperator) . "'" . ".\nLet's try again, " . $userName . "!";
-        if ($lowUserResponse == 'exit') {
-            return exit;
-        } elseif (userResponse($firstRandomOperand, $secondRandomOperand, $randomOperator, $userResponse) == true) {
+        if (userResponse($firstRandomOperand, $secondRandomOperand, $randomOperator, $userResponse) == true) {
             $rightAnswersSum++;
             line($positiveResponse);
         } else {
