@@ -2,6 +2,10 @@
 
 namespace Src\Games\Brain\Prime\Game;
 
+use function cli\line;
+use function cli\prompt;
+use function cli\out;
+
 #функция которая определяет простое число
 function primeNumber(int $acceptedNumber): bool
 {
@@ -51,4 +55,40 @@ function rightAnswer(int $acceptedNumber): string
         $rightAnswer = 'no';
     }
     return $rightAnswer;
+}
+
+function isItPrimeNumber()
+{
+    require __DIR__ . '/../../vendor/autoload.php';
+    $userGreeting = 'Welcome to the Brain Games!';
+    line($userGreeting);
+    $userName = prompt('May I have your name? ');
+    $helloUser = 'Hello, ' . $userName . '!';
+    line($helloUser);
+    $gameConditions = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+    line($gameConditions);
+    $wellDone = 'Congratulations, ' . $userName . '!';
+    $rightAnswersSum = 0;
+    while ($rightAnswersSum < 3) {
+        $questionBeforeNumber = 'Question: ';
+        $lineBeforeUserResponse = 'Your answer';
+        $positiveResponse = 'Correct!';
+        $randomNumber = rand(1, 99);
+        out($questionBeforeNumber);
+        line($randomNumber);
+        $userResponse = prompt($lineBeforeUserResponse);
+        $lowUserResponse = strtolower($userResponse);
+        $firstPartNegativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'";
+        $secondPartNegativeResponse = rightAnswer($randomNumber);
+        $thirdRartNegativeResponse = "'" . ".\nLet's try again, " . $userName . "!";
+        $negativeResponse = $firstPartNegativeResponse . $secondPartNegativeResponse . $thirdRartNegativeResponse;
+        if (answeredCorrectly($lowUserResponse, $randomNumber) == true) {
+            $rightAnswersSum++;
+            line($positiveResponse);
+        } else {
+            line($negativeResponse);
+            exit;
+        }
+    }
+    return line($wellDone);
 }

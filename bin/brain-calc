@@ -1,55 +1,11 @@
 #!/usr/bin/env php
-
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
-use function cli\line;
-use function cli\prompt;
-use function cli\out;
+namespace bin\brain\calc;
 
 require __DIR__ . '/../src/Games/brain-calc-game.php';
-use function Src\Games\Brain\Calc\Game\ifPlusOperator;
-use function Src\Games\Brain\Calc\Game\ifMinusOperator;
-use function Src\Games\Brain\Calc\Game\ifMultiplicationOperator;
-use function Src\Games\Brain\Calc\Game\correctResultOfOperation;
-use function Src\Games\Brain\Calc\Game\userResponse;
+require __DIR__ . '/../vendor/autoload.php';
 
-
-function calculator()
-{
-    $userGreeting = 'Welcome to the Brain Games!';
-    line($userGreeting);
-    $userName = prompt('May I have your name? ');
-    $helloUser = 'Hello, ' . $userName . '!';
-    line($helloUser);
-    $gameConditions = 'What is the result of the expression?';
-    line($gameConditions);
-    $wellDone = 'Congratulations, ' . $userName . '!';
-    $rightAnswersSum = 0;
-    while ($rightAnswersSum < 3) {
-        $questionBeforeOperation = 'Question: ';
-        $lineBeforeUserResponse = 'Your answer';
-        $positiveResponse = 'Correct!';
-        $firstRandomOperand = rand(1, 99);
-        $secondRandomOperand = rand(1, 99);
-        $arrayOfOperators = ['+', '-', '*'];
-        $randomOperatorNumber = array_rand($arrayOfOperators);
-        $randomOperator = $arrayOfOperators[$randomOperatorNumber];
-        $randomExpression = $firstRandomOperand . ' ' . $randomOperator . ' ' . $secondRandomOperand;
-        out($questionBeforeOperation);
-        line($randomExpression);
-        $userResponse = prompt($lineBeforeUserResponse);
-        $lowUserResponse = strtolower($userResponse);
-        $negativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'" . correctResultOfOperation($firstRandomOperand, $secondRandomOperand, $randomOperator) . "'" . ".\nLet's try again, " . $userName . "!";
-        if (userResponse($firstRandomOperand, $secondRandomOperand, $randomOperator, $userResponse) == true) {
-            $rightAnswersSum++;
-            line($positiveResponse);
-        } else {
-            line($negativeResponse);
-            exit;
-        }
-    }
-    return line($wellDone);
-}
+use function Src\Games\Brain\Calc\Game\calculator;
 
 calculator();

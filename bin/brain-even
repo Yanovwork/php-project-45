@@ -1,49 +1,11 @@
 #!/usr/bin/env php
-
 <?php
 
+namespace bin\brain\even;
+
 require __DIR__ . '/../vendor/autoload.php';
-use function cli\line;
-use function cli\prompt;
-use function cli\out;
-
 require __DIR__ . '/../src/Games/brain-even-game.php';
-use function Src\Games\Brain\Even\Game\evenOrOdd;
-use function Src\Games\Brain\Even\Game\isAnswerYes;
-use function Src\Games\Brain\Even\Game\isAnswerNo;
-use function Src\Games\Brain\Even\Game\exactAnswer;
-use function Src\Games\Brain\Even\Game\rightAnswer;
 
-function parityCheck()
-{
-    $userGreeting = 'Welcome to the Brain Games!';
-    line($userGreeting);
-    $userName = prompt('May I have your name? ');
-    $helloUser = 'Hello, ' . $userName . '!';
-    line($helloUser);
-    $gameConditions = 'Answer "yes" if the number is even, otherwise answer "no".';
-    line($gameConditions);
-    $wellDone = 'Congratulations, ' . $userName . '!';
-    $rightAnswersSum = 0;
-    while ($rightAnswersSum < 3) {
-        $questionBeforeNumber = 'Question: ';
-        $lineBeforeUserResponse = 'Your answer';
-        $positiveResponse = 'Correct!';
-        $randomNumber = rand(1, 99);
-        out($questionBeforeNumber);
-        line($randomNumber);
-        $userResponse = prompt($lineBeforeUserResponse);
-        $lowUserResponse = mb_strtolower($userResponse);
-        $negativeResponse = "'" . $lowUserResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'" . rightAnswer($randomNumber) . "'" . ".\nLet's try again, " . $userName . "!";
-        if (exactAnswer($lowUserResponse, $randomNumber) == true) {
-            $rightAnswersSum++;
-            line($positiveResponse);
-        } else {
-            line($negativeResponse);
-            exit;
-        }
-    }
-    return line($wellDone);
-}
+use function Src\Games\Brain\Even\Game\parityCheck;
 
 parityCheck();

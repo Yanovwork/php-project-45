@@ -2,6 +2,10 @@
 
 namespace Src\Games\Brain\Even\Game;
 
+use function cli\line;
+use function cli\prompt;
+use function cli\out;
+
 #функция, которая определяет четное или нечетное число
 function evenOrOdd(int $acceptedNumber): bool
 {
@@ -51,4 +55,40 @@ function rightAnswer(int $acceptedNumber)
         $rightAnswer = 'no';
     }
     return $rightAnswer;
+}
+
+function parityCheck()
+{
+    require __DIR__ . '/../../vendor/autoload.php';
+    $userGreeting = 'Welcome to the Brain Games!';
+    line($userGreeting);
+    $userName = prompt('May I have your name? ');
+    $helloUser = 'Hello, ' . $userName . '!';
+    line($helloUser);
+    $gameConditions = 'Answer "yes" if the number is even, otherwise answer "no".';
+    line($gameConditions);
+    $wellDone = 'Congratulations, ' . $userName . '!';
+    $rightAnswersSum = 0;
+    while ($rightAnswersSum < 3) {
+        $questionBeforeNumber = 'Question: ';
+        $lineBeforeUserResponse = 'Your answer';
+        $positiveResponse = 'Correct!';
+        $randomNumber = rand(1, 99);
+        out($questionBeforeNumber);
+        line($randomNumber);
+        $userResponse = prompt($lineBeforeUserResponse);
+        $lowUserResponse = mb_strtolower($userResponse);
+        $firstPartNegativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'";
+        $secondPartNegativeResponse = rightAnswer($randomNumber);
+        $thirdRartNegativeResponse = "'" . ".\nLet's try again, " . $userName . "!";
+        $negativeResponse = $firstPartNegativeResponse . $secondPartNegativeResponse . $thirdRartNegativeResponse;
+        if (exactAnswer($lowUserResponse, $randomNumber) == true) {
+            $rightAnswersSum++;
+            line($positiveResponse);
+        } else {
+            line($negativeResponse);
+            exit;
+        }
+    }
+    return line($wellDone);
 }

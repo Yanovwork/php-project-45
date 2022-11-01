@@ -1,52 +1,10 @@
 #!/usr/bin/env php
-
 <?php
 
+namespace bin\brain\progression;
+
 require __DIR__ . '/../vendor/autoload.php';
-use function cli\line;
-use function cli\prompt;
-use function cli\out;
-
 require __DIR__ . '/../src/Games/brain-progression-game.php';
-use function Src\Games\Brain\Progression\Game\generatingProgression;
-use function Src\Games\Brain\Progression\Game\correctnessOfUserResponse;
-use function Src\Games\Brain\Progression\Game\arrayToString;
-use function Src\Games\Brain\Progression\Game\rightAnswerProgression;
-
-
-function arithmeticProgression()
-{
-    $userGreeting = 'Welcome to the Brain Games!';
-    line($userGreeting);
-    $userName = prompt('May I have your name? ');
-    $helloUser = 'Hello, ' . $userName . '!';
-    line($helloUser);
-    $gameConditions = 'What number is missing in the progression?';
-    line($gameConditions);
-    $wellDone = 'Congratulations, ' . $userName . '!';
-    $rightAnswersSum = 0;
-    while ($rightAnswersSum < 3) {
-        $questionBeforeOperation = 'Question: ';
-        $lineBeforeUserResponse = 'Your answer';
-        $positiveResponse = 'Correct!';
-        out($questionBeforeOperation);
-        $maximumArrayLength = 15;
-        $randomProgression = generatingProgression($maximumArrayLength, $rightAnswersSum);
-        $randomEliminatedNumber = array_rand($randomProgression);
-        $outputOfProgression = arrayToString($randomProgression, $randomEliminatedNumber);
-        line($outputOfProgression);
-        $userResponse = prompt($lineBeforeUserResponse);
-        $lowUserResponse = strtolower($userResponse);
-        $negativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'" . rightAnswerProgression($randomProgression, $randomEliminatedNumber) . "'" . ".\nLet's try again, " . $userName . "!";
-        if (correctnessOfUserResponse($userResponse, $randomProgression, $randomEliminatedNumber) == true) {
-            $rightAnswersSum++;
-            line($positiveResponse);
-        } else {
-            line($negativeResponse);
-            exit;
-        }
-    }
-    return line($wellDone);
-}
+use function Src\Games\Brain\Progression\Game\arithmeticProgression;
 
 arithmeticProgression();

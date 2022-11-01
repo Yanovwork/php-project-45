@@ -47,3 +47,42 @@ function rightAnswerProgression(array $receivedArray, int $numberOfSelectedItem)
     $rightAnswers = $receivedArray[$numberOfSelectedItem];
     return $rightAnswers;
 }
+
+function arithmeticProgression()
+{
+    require __DIR__ . '/../../vendor/autoload.php';
+    $userGreeting = 'Welcome to the Brain Games!';
+    line($userGreeting);
+    $userName = prompt('May I have your name? ');
+    $helloUser = 'Hello, ' . $userName . '!';
+    line($helloUser);
+    $gameConditions = 'What number is missing in the progression?';
+    line($gameConditions);
+    $wellDone = 'Congratulations, ' . $userName . '!';
+    $rightAnswersSum = 0;
+    while ($rightAnswersSum < 3) {
+        $questionBeforeOperation = 'Question: ';
+        $lineBeforeUserResponse = 'Your answer';
+        $positiveResponse = 'Correct!';
+        out($questionBeforeOperation);
+        $maximumArrayLength = 15;
+        $randomProgression = generatingProgression($maximumArrayLength, $rightAnswersSum);
+        $randomEliminatedNumber = array_rand($randomProgression);
+        $outputOfProgression = arrayToString($randomProgression, $randomEliminatedNumber);
+        line($outputOfProgression);
+        $userResponse = prompt($lineBeforeUserResponse);
+        $lowUserResponse = strtolower($userResponse);
+        $firstPartNegativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'";
+        $secondPartNegativeResponse = rightAnswerProgression($randomProgression, $randomEliminatedNumber);
+        $thirdRartNegativeResponse = "'" . ".\nLet's try again, " . $userName . "!";
+        $negativeResponse = $firstPartNegativeResponse . $secondPartNegativeResponse . $thirdRartNegativeResponse;
+        if (correctnessOfUserResponse($userResponse, $randomProgression, $randomEliminatedNumber) == true) {
+            $rightAnswersSum++;
+            line($positiveResponse);
+        } else {
+            line($negativeResponse);
+            exit;
+        }
+    }
+    return line($wellDone);
+}

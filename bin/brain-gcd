@@ -1,48 +1,11 @@
 #!/usr/bin/env php
-
 <?php
 
+namespace bin\brain\gcd;
+
 require __DIR__ . '/../vendor/autoload.php';
-use function cli\line;
-use function cli\prompt;
-use function cli\out;
-
 require __DIR__ . '/../src/Games/brain-gcd-game.php';
-use function Src\Games\Brain\Gcd\Game\userResponseGCD;
-use function Src\Games\Brain\Gcd\Game\greatestCommonDivisorOfTwoNumbers;
 
-function greatestCommonDivisor()
-{
-    $userGreeting = 'Welcome to the Brain Games!';
-    line($userGreeting);
-    $userName = prompt('May I have your name? ');
-    $helloUser = 'Hello, ' . $userName . '!';
-    line($helloUser);
-    $gameConditions = 'Find the greatest common divisor of given numbers.';
-    line($gameConditions);
-    $wellDone = 'Congratulations, ' . $userName . '!';
-    $rightAnswersSum = 0;
-    while ($rightAnswersSum < 3) {
-        $questionBeforeTwoRandomNumber = 'Question: ';
-        $lineBeforeUserResponse = 'Your answer';
-        $positiveResponse = 'Correct!';
-        $firstRandomNumber = rand(1, 99);
-        $secondRandomNumber = rand(1, 99);
-        $randomTwoNumber = $firstRandomNumber . ' ' . $secondRandomNumber;
-        out($questionBeforeTwoRandomNumber);
-        line($randomTwoNumber);
-        $userResponse = prompt($lineBeforeUserResponse);
-        $lowUserResponse = strtolower($userResponse);
-        $negativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'" . greatestCommonDivisorOfTwoNumbers($firstRandomNumber, $secondRandomNumber) . "'" . ".\nLet's try again, " . $userName . "!";
-        if (userResponseGCD($userResponse, $firstRandomNumber, $secondRandomNumber) == true) {
-            $rightAnswersSum++;
-            line($positiveResponse);
-        } else {
-            line($negativeResponse);
-            exit;
-        }
-    }
-    return line($wellDone);
-}
+use function Src\Games\Brain\Gcd\Game\greatestCommonDivisor;
 
 greatestCommonDivisor();

@@ -1,49 +1,11 @@
 #!/usr/bin/env php
-
 <?php
 
+namespace bin\brain\prime;
+
 require __DIR__ . '/../vendor/autoload.php';
-use function cli\line;
-use function cli\prompt;
-use function cli\out;
-
 require __DIR__ . '/../src/Games/brain-prime-game.php';
-use function Src\Games\Brain\Prime\Game\primeNumber;
-use function Src\Games\Brain\Prime\Game\ifAnswerYesPrime;
-use function Src\Games\Brain\Prime\Game\ifAnswerNoPrime;
-use function Src\Games\Brain\Prime\Game\answeredCorrectly;
-use function Src\Games\Brain\Prime\Game\rightAnswer;
 
-function isItPrimeNumber()
-{
-    $userGreeting = 'Welcome to the Brain Games!';
-    line($userGreeting);
-    $userName = prompt('May I have your name? ');
-    $helloUser = 'Hello, ' . $userName . '!';
-    line($helloUser);
-    $gameConditions = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-    line($gameConditions);
-    $wellDone = 'Congratulations, ' . $userName . '!';
-    $rightAnswersSum = 0;
-    while ($rightAnswersSum < 3) {
-        $questionBeforeNumber = 'Question: ';
-        $lineBeforeUserResponse = 'Your answer';
-        $positiveResponse = 'Correct!';
-        $randomNumber = rand(1, 99);
-        out($questionBeforeNumber);
-        line($randomNumber);
-        $userResponse = prompt($lineBeforeUserResponse);
-        $lowUserResponse = strtolower($userResponse);
-        $negativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'" . rightAnswer($randomNumber) . "'" . ".\nLet's try again, " . $userName . "!";
-        if (answeredCorrectly($lowUserResponse, $randomNumber) == true) {
-            $rightAnswersSum++;
-            line($positiveResponse);
-        } else {
-            line($negativeResponse);
-            exit;
-        }
-    }
-    return line($wellDone);
-}
+use function Src\Games\Brain\Prime\Game\isItPrimeNumber;
 
 isItPrimeNumber();
