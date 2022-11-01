@@ -33,7 +33,7 @@ function greatestCommonDivisor()
         line($randomTwoNumber);
         $userResponse = prompt($lineBeforeUserResponse);
         $lowUserResponse = strtolower($userResponse);
-        $negativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'" . gmp_gcd($firstRandomNumber, $secondRandomNumber) . "'" . ".\nLet's try again, " . $userName . "!";
+        $negativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'" . greatestCommonDivisorOfTwoNumbers($firstRandomNumber, $secondRandomNumber) . "'" . ".\nLet's try again, " . $userName . "!";
         if (userResponseGCD($userResponse, $firstRandomNumber, $secondRandomNumber) == true) {
             $rightAnswersSum++;
             line($positiveResponse);
