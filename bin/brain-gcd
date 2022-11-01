@@ -9,6 +9,7 @@ use function cli\out;
 
 require __DIR__ . '/../src/Games/brain-gcd-game.php';
 use function Src\Games\Brain\Gcd\Game\userResponseGCD;
+use function Src\Games\Brain\Gcd\Game\greatestCommonDivisorOfTwoNumbers;
 
 function greatestCommonDivisor()
 {
