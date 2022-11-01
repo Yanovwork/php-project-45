@@ -2,6 +2,10 @@
 
 namespace  Src\Games\Brain\Progression\Game;
 
+use function cli\line;
+use function cli\prompt;
+use function cli\out;
+
 #функция, которая генерирует нужный массив
 function generatingProgression(int $acceptedMaximumArrayLength, int $acceptedNumberOfCorrectAnswers): array
 {
