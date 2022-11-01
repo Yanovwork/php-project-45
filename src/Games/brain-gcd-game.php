@@ -22,7 +22,7 @@ function greatestCommonDivisorOfTwoNumbers(int $firstAcceptedNumber, int $second
 }
 
 #функция которая определяет правильно ли ответил пользователь
-function userResponseGCD($accepsedUserResponce, int $firstAcceptedNumber, int $secondAcceptedNumber): bool
+function userResponseGCD(string $accepsedUserResponce, int $firstAcceptedNumber, int $secondAcceptedNumber): bool
 {
     $intAccepsedUserResponce = (int)$accepsedUserResponce;
     if ($intAccepsedUserResponce == greatestCommonDivisorOfTwoNumbers($firstAcceptedNumber, $secondAcceptedNumber)) {

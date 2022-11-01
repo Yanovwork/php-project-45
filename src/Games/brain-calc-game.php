@@ -25,7 +25,7 @@ function ifMultiplicationOperator(int $firstOperand, int $secondOperand): int
     return $multiplicationOfOperands;
 }
 #функция возвращает правильный ответ
-function correctResult(int $firstOperand, int $secondOperand, string $acceptedRandomOperator): int
+function correctResult(int $firstOperand, int $secondOperand, string $acceptedRandomOperator)
 {
     if ($acceptedRandomOperator == '+') {
         return ifPlusOperator($firstOperand, $secondOperand);
@@ -36,10 +36,10 @@ function correctResult(int $firstOperand, int $secondOperand, string $acceptedRa
     }
 }
 #функция, которая определяет правильно ли ответил пользователь
-function userResponse(int $firstOperand, int $secondOperand, string $acceptedRandomOperator, $aUserResponse): bool
+function userResponse(int $firstOperand, int $secondOperand, string $aRandomOperator, string $aUserResponse): bool
 {
     $userResponseInt = (int)$aUserResponse;
-    if (correctResult($firstOperand, $secondOperand, $acceptedRandomOperator) == $userResponseInt) {
+    if (correctResult($firstOperand, $secondOperand, $aRandomOperator) == $userResponseInt) {
         return true;
     } else {
         return false;

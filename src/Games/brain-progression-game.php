@@ -28,9 +28,9 @@ function generatingProgression(int $acceptedMaximumArrayLength, int $acceptedNum
     return $proposedArray;
 }
 #функция, которая определяет правильно ли ответил пользователь
-function correctnessOfUserResponse($acceptedUserResponse, array $receivedArray, int $numberOfSelectedItem): bool
+function correctnessOfUserResponse(string $aUserResponse, array $receivedArray, int|string $numberOfSelectedItem): bool
 {
-    $intUserResponse = (int)$acceptedUserResponse;
+    $intUserResponse = (int)$aUserResponse;
     if ($receivedArray[$numberOfSelectedItem] == $intUserResponse) {
         return true;
     } else {
@@ -38,7 +38,7 @@ function correctnessOfUserResponse($acceptedUserResponse, array $receivedArray, 
     }
 }
 #функция, которая переводит массив в строку
-function arrayToString(array $receivedArray, int $numberOfSelectedItem): string
+function arrayToString(array $receivedArray, int|string $numberOfSelectedItem): string
 {
     $receivedArray[$numberOfSelectedItem] = '..';
     $arrayInString = implode(' ', $receivedArray);
@@ -46,7 +46,7 @@ function arrayToString(array $receivedArray, int $numberOfSelectedItem): string
 }
 
 #функция, которая определяет верный ответ
-function rightAnswerProgression(array $receivedArray, int $numberOfSelectedItem): int
+function rightAnswerProgression(array $receivedArray, int|string $numberOfSelectedItem): int
 {
     $rightAnswers = $receivedArray[$numberOfSelectedItem];
     return $rightAnswers;

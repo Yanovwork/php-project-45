@@ -5,6 +5,7 @@ namespace bin\brain\progression;
 
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../src/Games/brain-progression-game.php';
+
 use function Src\Games\Brain\Progression\Game\arithmeticProgression;
 
 arithmeticProgression();
