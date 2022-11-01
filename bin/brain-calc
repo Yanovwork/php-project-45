@@ -35,7 +35,7 @@ function calculator()
         $arrayOfOperators = ['+', '-', '*'];
         $randomOperatorNumber = array_rand($arrayOfOperators);
         $randomOperator = $arrayOfOperators[$randomOperatorNumber];
-        $randomExpression = $firstRandomOperand . $randomOperator . $secondRandomOperand;
+        $randomExpression = $firstRandomOperand . ' ' . $randomOperator . ' ' . $secondRandomOperand;
         out($questionBeforeOperation);
         line($randomExpression);
         $userResponse = prompt($lineBeforeUserResponse);
