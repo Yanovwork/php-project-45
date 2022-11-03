@@ -1,11 +1,8 @@
 #!/usr/bin/env php
 <?php
 
-namespace bin\brain\even;
-
 require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . '/../src/Games/brain-even-game.php';
 
-use function Src\Games\Brain\Even\Game\parityCheck;
+use function Src\Games\Brain\Even\Game\runningParity;
 
-parityCheck();
+runningParity();

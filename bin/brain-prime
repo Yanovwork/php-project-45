@@ -1,10 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-namespace bin\brain\prime;
-
 require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . '/../src/Games/brain-prime-game.php';
 
 use function Src\Games\Brain\Prime\Game\isItPrimeNumber;
 

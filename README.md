@@ -3,8 +3,8 @@
 
 <a href="https://codeclimate.com/github/Yanovwork/php-project-45/maintainability"><img src="https://api.codeclimate.com/v1/badges/ee7a9970ede67c1ec1ea/maintainability" /></a>
 
-https://asciinema.org/a/0nhbmkxvlsHKVPaeE9lC13FZ0
-https://asciinema.org/a/PlLHtorqjOCNmyqo8f65ZSsc2
-https://asciinema.org/a/1GEGD5vKKZTTiYBoeP2oUQvTD
-https://asciinema.org/a/8P7W2Jbs7B3mCtYaYMESSeHma
-https://asciinema.org/a/GtDFuUCc9rf3ci6t0VpriA2R2
+[![asciicast](https://asciinema.org/a/QMV3zWFESDcdyv1jM1ZnGN0U5.svg)](https://asciinema.org/a/QMV3zWFESDcdyv1jM1ZnGN0U5)
+[![asciicast](https://asciinema.org/a/ekqfbzWGYNOCfBeE4qUKFWx0v.svg)](https://asciinema.org/a/ekqfbzWGYNOCfBeE4qUKFWx0v)
+[![asciicast](https://asciinema.org/a/buBnjHMeBNH3JpBpAYQPmteWJ.svg)](https://asciinema.org/a/buBnjHMeBNH3JpBpAYQPmteWJ)
+[![asciicast](https://asciinema.org/a/PSKxUEcb2p1bniqCv0XdItLRK.svg)](https://asciinema.org/a/PSKxUEcb2p1bniqCv0XdItLRK)
+[![asciicast](https://asciinema.org/a/RTA8tiDGryxrC8b3XDB7Gk02z.svg)](https://asciinema.org/a/RTA8tiDGryxrC8b3XDB7Gk02z)

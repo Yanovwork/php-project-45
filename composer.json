@@ -3,7 +3,14 @@
     "autoload": {
         "psr-4": {
             "Hexlet\\Code\\": "src/"
-        }
+        },
+        "files": [
+            "src/Games/brain-calc-game.php",
+            "src/Games/brain-even-game.php",
+            "src/Games/brain-gcd-game.php",
+            "src/Games/brain-prime-game.php",
+            "src/Games/brain-progression-game.php"
+        ]
     },
     "authors": [
         {

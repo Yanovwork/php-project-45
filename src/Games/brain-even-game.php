@@ -7,7 +7,7 @@ use function cli\prompt;
 use function cli\out;
 
 #функция, которая определяет четное или нечетное число
-function evenOrOdd(int $acceptedNumber): bool
+function determineParity(int $acceptedNumber): bool
 {
     if ($acceptedNumber % 2 == 0) {
         return true;
@@ -18,7 +18,7 @@ function evenOrOdd(int $acceptedNumber): bool
 #функция, которая определяет правильный ли ответ 'yes'
 function isAnswerYes(int $acceptedNumber): bool
 {
-    if (evenOrOdd($acceptedNumber) == true) {
+    if (determineParity($acceptedNumber) == true) {
         return true;
     } else {
         return false;
@@ -27,14 +27,14 @@ function isAnswerYes(int $acceptedNumber): bool
 #функция, которая определяет правильный ли ответ 'no'
 function isAnswerNo(int $acceptedNumber): bool
 {
-    if (evenOrOdd($acceptedNumber) == false) {
+    if (determineParity($acceptedNumber) == false) {
         return true;
     } else {
         return false;
     }
 }
 #функция, которая определяет правильно ли ответил пользователь
-function exactAnswer(string $acceptedUserResponse, int $acceptedNumber): bool
+function determinesСorrectness(string $acceptedUserResponse, int $acceptedNumber): bool
 {
     if ($acceptedUserResponse == 'yes') {
         return isAnswerYes($acceptedNumber);
@@ -46,7 +46,7 @@ function exactAnswer(string $acceptedUserResponse, int $acceptedNumber): bool
 }
 
 #функция, которая определяет правильный ответ
-function rightAnswer(int $acceptedNumber)
+function definesResponse(int $acceptedNumber)
 {
     $rightAnswer = '';
     if (isAnswerYes($acceptedNumber) == true) {
@@ -57,7 +57,7 @@ function rightAnswer(int $acceptedNumber)
     return $rightAnswer;
 }
 
-function parityCheck()
+function runningParity()
 {
     require __DIR__ . '/../../vendor/autoload.php';
     $userGreeting = 'Welcome to the Brain Games!';
@@ -79,10 +79,10 @@ function parityCheck()
         $userResponse = prompt($lineBeforeUserResponse);
         $lowUserResponse = mb_strtolower($userResponse);
         $firstPartNegativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'";
-        $secondPartNegativeResponse = rightAnswer($randomNumber);
+        $secondPartNegativeResponse = definesResponse($randomNumber);
         $thirdRartNegativeResponse = "'" . ".\nLet's try again, " . $userName . "!";
         $negativeResponse = $firstPartNegativeResponse . $secondPartNegativeResponse . $thirdRartNegativeResponse;
-        if (exactAnswer($lowUserResponse, $randomNumber) == true) {
+        if (determinesСorrectness($lowUserResponse, $randomNumber) == true) {
             $rightAnswersSum++;
             line($positiveResponse);
         } else {

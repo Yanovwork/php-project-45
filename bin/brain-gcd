@@ -1,11 +1,8 @@
 #!/usr/bin/env php
 <?php
 
-namespace bin\brain\gcd;
-
 require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . '/../src/Games/brain-gcd-game.php';
 
-use function Src\Games\Brain\Gcd\Game\greatestCommonDivisor;
+use function Src\Games\Brain\Gcd\Game\runningGCD;
 
-greatestCommonDivisor();
+runningGCD();

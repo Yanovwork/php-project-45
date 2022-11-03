@@ -1,3 +1,4 @@
 {
-    "phpSniffer.autoDetect": true
+    "phpSniffer.autoDetect": true,
+    "git.ignoreLimitWarning": true
 }

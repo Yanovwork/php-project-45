@@ -1,11 +1,8 @@
 #!/usr/bin/env php
 <?php
 
-namespace bin\brain\calc;
-
-require __DIR__ . '/../src/Games/brain-calc-game.php';
 require __DIR__ . '/../vendor/autoload.php';
 
-use function Src\Games\Brain\Calc\Game\calculator;
+use function Src\Games\Brain\Calc\Game\runTheCalculator;
 
-calculator();
+runTheCalculator();

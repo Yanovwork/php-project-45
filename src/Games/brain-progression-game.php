@@ -28,7 +28,7 @@ function generatingProgression(int $acceptedMaximumArrayLength, int $acceptedNum
     return $proposedArray;
 }
 #функция, которая определяет правильно ли ответил пользователь
-function correctnessOfUserResponse(string $aUserResponse, array $receivedArray, int|string $numberOfSelectedItem): bool
+function determiningUserTruth(string $aUserResponse, array $receivedArray, int|string $numberOfSelectedItem): bool
 {
     $intUserResponse = (int)$aUserResponse;
     if ($receivedArray[$numberOfSelectedItem] == $intUserResponse) {
@@ -38,7 +38,7 @@ function correctnessOfUserResponse(string $aUserResponse, array $receivedArray, 
     }
 }
 #функция, которая переводит массив в строку
-function arrayToString(array $receivedArray, int|string $numberOfSelectedItem): string
+function convertingAnArrayToString(array $receivedArray, int|string $numberOfSelectedItem): string
 {
     $receivedArray[$numberOfSelectedItem] = '..';
     $arrayInString = implode(' ', $receivedArray);
@@ -46,13 +46,13 @@ function arrayToString(array $receivedArray, int|string $numberOfSelectedItem): 
 }
 
 #функция, которая определяет верный ответ
-function rightAnswerProgression(array $receivedArray, int|string $numberOfSelectedItem): int
+function determiningTheCorrectAnswer(array $receivedArray, int|string $numberOfSelectedItem): int
 {
     $rightAnswers = $receivedArray[$numberOfSelectedItem];
     return $rightAnswers;
 }
 
-function arithmeticProgression()
+function startTheProgression()
 {
     require __DIR__ . '/../../vendor/autoload.php';
     $userGreeting = 'Welcome to the Brain Games!';
@@ -72,15 +72,15 @@ function arithmeticProgression()
         $maximumArrayLength = 15;
         $randomProgression = generatingProgression($maximumArrayLength, $rightAnswersSum);
         $randomEliminatedNumber = array_rand($randomProgression);
-        $outputOfProgression = arrayToString($randomProgression, $randomEliminatedNumber);
+        $outputOfProgression = convertingAnArrayToString($randomProgression, $randomEliminatedNumber);
         line($outputOfProgression);
         $userResponse = prompt($lineBeforeUserResponse);
         $lowUserResponse = strtolower($userResponse);
         $firstPartNegativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'";
-        $secondPartNegativeResponse = rightAnswerProgression($randomProgression, $randomEliminatedNumber);
+        $secondPartNegativeResponse = determiningTheCorrectAnswer($randomProgression, $randomEliminatedNumber);
         $thirdRartNegativeResponse = "'" . ".\nLet's try again, " . $userName . "!";
         $negativeResponse = $firstPartNegativeResponse . $secondPartNegativeResponse . $thirdRartNegativeResponse;
-        if (correctnessOfUserResponse($userResponse, $randomProgression, $randomEliminatedNumber) == true) {
+        if (determiningUserTruth($userResponse, $randomProgression, $randomEliminatedNumber) == true) {
             $rightAnswersSum++;
             line($positiveResponse);
         } else {

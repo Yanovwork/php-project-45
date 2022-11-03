@@ -7,7 +7,7 @@ use function cli\prompt;
 use function cli\out;
 
 #функция которая определяет наибольший общий делитель
-function greatestCommonDivisorOfTwoNumbers(int $firstAcceptedNumber, int $secondAcceptedNumber): int
+function findGreatestCommonDivisor(int $firstAcceptedNumber, int $secondAcceptedNumber): int
 {
     $a = abs($firstAcceptedNumber);
     $b = abs($secondAcceptedNumber);
@@ -22,17 +22,17 @@ function greatestCommonDivisorOfTwoNumbers(int $firstAcceptedNumber, int $second
 }
 
 #функция которая определяет правильно ли ответил пользователь
-function userResponseGCD(string $accepsedUserResponce, int $firstAcceptedNumber, int $secondAcceptedNumber): bool
+function determineСorrectness(string $accepsedUserResponce, int $firstAcceptedNumber, int $secondAcceptedNumber): bool
 {
     $intAccepsedUserResponce = (int)$accepsedUserResponce;
-    if ($intAccepsedUserResponce == greatestCommonDivisorOfTwoNumbers($firstAcceptedNumber, $secondAcceptedNumber)) {
+    if ($intAccepsedUserResponce == findGreatestCommonDivisor($firstAcceptedNumber, $secondAcceptedNumber)) {
         return true;
     } else {
         return false;
     }
 }
 
-function greatestCommonDivisor()
+function runningGCD()
 {
     require __DIR__ . '/../../vendor/autoload.php';
     $userGreeting = 'Welcome to the Brain Games!';
@@ -56,10 +56,10 @@ function greatestCommonDivisor()
         $userResponse = prompt($lineBeforeUserResponse);
         $lowUserResponse = strtolower($userResponse);
         $firstPartNegativeResponse = "'" . $userResponse . "'" . ' is wrong answer ;(. Correct answer was ' . "'";
-        $secondPartNegativeResponse = greatestCommonDivisorOfTwoNumbers($firstRandomNumber, $secondRandomNumber);
+        $secondPartNegativeResponse = findGreatestCommonDivisor($firstRandomNumber, $secondRandomNumber);
         $thirdRartNegativeResponse = "'" . ".\nLet's try again, " . $userName . "!";
         $negativeResponse = $firstPartNegativeResponse . $secondPartNegativeResponse . $thirdRartNegativeResponse;
-        if (userResponseGCD($userResponse, $firstRandomNumber, $secondRandomNumber) == true) {
+        if (determineСorrectness($userResponse, $firstRandomNumber, $secondRandomNumber) == true) {
             $rightAnswersSum++;
             line($positiveResponse);
         } else {
