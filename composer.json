@@ -9,7 +9,8 @@
             "src/Games/brain-even-game.php",
             "src/Games/brain-gcd-game.php",
             "src/Games/brain-prime-game.php",
-            "src/Games/brain-progression-game.php"
+            "src/Games/brain-progression-game.php",
+            "src/Cli.php"
         ]
     },
     "authors": [
