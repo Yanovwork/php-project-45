@@ -52,9 +52,8 @@ function determiningTheCorrectAnswer(array $receivedArray, int|string $numberOfS
     return $rightAnswers;
 }
 
-function startTheProgression()
+function runTheProgression()
 {
-    require __DIR__ . '/../../vendor/autoload.php';
     $userGreeting = 'Welcome to the Brain Games!';
     line($userGreeting);
     $userName = prompt('May I have your name? ');

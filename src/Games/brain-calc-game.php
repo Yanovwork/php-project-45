@@ -48,7 +48,6 @@ function checkingResponse(int $firstOperand, int $secondOperand, string $aRandom
 
 function runTheCalculator()
 {
-    require __DIR__ . '/../../vendor/autoload.php';
     $userGreeting = 'Welcome to the Brain Games!';
     line($userGreeting);
     $userName = prompt('May I have your name? ');

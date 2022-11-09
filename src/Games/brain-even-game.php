@@ -57,9 +57,8 @@ function definesResponse(int $acceptedNumber)
     return $rightAnswer;
 }
 
-function runningParity()
+function runParity()
 {
-    require __DIR__ . '/../../vendor/autoload.php';
     $userGreeting = 'Welcome to the Brain Games!';
     line($userGreeting);
     $userName = prompt('May I have your name? ');

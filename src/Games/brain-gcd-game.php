@@ -32,9 +32,8 @@ function determineСorrectness(string $accepsedUserResponce, int $firstAcceptedN
     }
 }
 
-function runningGCD()
+function runGCD()
 {
-    require __DIR__ . '/../../vendor/autoload.php';
     $userGreeting = 'Welcome to the Brain Games!';
     line($userGreeting);
     $userName = prompt('May I have your name? ');

@@ -57,9 +57,8 @@ function determinesCorrectAnswer(int $acceptedNumber): string
     return $rightAnswer;
 }
 
-function isItPrimeNumber()
+function runIsItPrimeNumber()
 {
-    require __DIR__ . '/../../vendor/autoload.php';
     $userGreeting = 'Welcome to the Brain Games!';
     line($userGreeting);
     $userName = prompt('May I have your name? ');
