@@ -24,13 +24,16 @@ function runIsItPrimeNumber()
         $number = rand(1, 99);
         switch (mt_rand(1, 3)) {
             case 1:
-                $numbersAndAnswer["$number"] = definesPrimeNumber($number);
+                $rightResponse = determineParity($number);
+                $numbersAndAnswer["$number"] = $rightResponse;
                 break;
             case 2:
-                $numbersAndAnswer["$number"] = definesPrimeNumber($number);
+                $rightResponse = determineParity($number);
+                $numbersAndAnswer["$number"] = $rightResponse;
                 break;
             case 3:
-                $numbersAndAnswer["$number"] = definesPrimeNumber($number);
+                $rightResponse = determineParity($number);
+                $numbersAndAnswer["$number"] = $rightResponse;
                 break;
         }
     }

@@ -23,13 +23,16 @@ function runEven()
         $number = rand(0, 99);
         switch (mt_rand(1, 3)) {
             case 1:
-                $numberAndAnswer["$number"] = determineParity($number);
+                $rightResponse = determineParity($number);
+                $numberAndAnswer["$number"] = $rightResponse;
                 break;
             case 2:
-                $numberAndAnswer["$number"] = determineParity($number);
+                $rightResponse = determineParity($number);
+                $numberAndAnswer["$number"] = $rightResponse;
                 break;
             case 3:
-                $numberAndAnswer["$number"] = determineParity($number);
+                $rightResponse = determineParity($number);
+                $numberAndAnswer["$number"] = $rightResponse;
                 break;
         }
     }
