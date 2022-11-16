@@ -25,8 +25,8 @@ function runGCD()
     require_once __DIR__ . '/../Engine.php';
     $numbersAndAnswer = [];
     for ($i = 0; $i < 3; $i++) {
-        $first = rand(0, 99);
-        $second = rand(0, 99);
+        $first = rand(1, 99);
+        $second = rand(1, 99);
         switch (mt_rand(1, 3)) {
             case 1:
                 $numbersAndAnswer["$first $second"] = findGreatestCommonDivisor($first, $second);
