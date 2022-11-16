@@ -1,16 +1,14 @@
 {
     "name": "hexlet/code",
     "autoload": {
-        "psr-4": {
-            "Hexlet\\Code\\": "src/"
-        },
         "files": [
-            "src/Games/brain-calc-game.php",
-            "src/Games/brain-even-game.php",
-            "src/Games/brain-gcd-game.php",
-            "src/Games/brain-prime-game.php",
-            "src/Games/brain-progression-game.php",
-            "src/Cli.php"
+            "src/Games/BrainCalcGame.php",
+            "src/Games/BrainEvenGame.php",
+            "src/Games/BrainGcdGame.php",
+            "src/Games/BrainPrimeGame.php",
+            "src/Games/BrainProgressionGame.php",
+            "src/Cli.php",
+            "src/Engine.php"
         ]
     },
     "authors": [
