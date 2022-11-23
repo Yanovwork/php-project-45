@@ -4,6 +4,8 @@ namespace Src\Games\Brain\Gcd\Game;
 
 use function src\Engine\runGame;
 
+use const src\Engine\ROUND;
+
 const TASK = 'Find the greatest common divisor of given numbers.';
 
 function findGreatestCommonDivisor(int $firstAcceptedNumber, int $secondAcceptedNumber): int
@@ -22,9 +24,8 @@ function findGreatestCommonDivisor(int $firstAcceptedNumber, int $secondAccepted
 
 function runGCD()
 {
-    require_once __DIR__ . '/../Engine.php';
     $numbersAndAnswer = [];
-    for ($i = 0; $i < 3; $i++) {
+    for ($i = 0; $i < ROUND; $i++) {
         $first = rand(1, 99);
         $second = rand(1, 99);
         switch (mt_rand(1, 3)) {

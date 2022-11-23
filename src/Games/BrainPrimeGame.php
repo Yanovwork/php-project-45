@@ -4,6 +4,8 @@ namespace Src\Games\Brain\Prime\Game;
 
 use function src\Engine\runGame;
 
+use const src\Engine\ROUND;
+
 const TASK = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 function definesPrimeNumber(int $acceptedNumber): bool
@@ -18,11 +20,10 @@ function definesPrimeNumber(int $acceptedNumber): bool
 
 function runIsItPrimeNumber()
 {
-    require_once __DIR__ . '/../Engine.php';
     $questions = [];
     $answers = [];
     $randArray = [];
-    for ($i = 0; $i < 3; $i++) {
+    for ($i = 0; $i < ROUND; $i++) {
         $randArray[] = rand(1, 99);
     }
     foreach ($randArray as $number) {

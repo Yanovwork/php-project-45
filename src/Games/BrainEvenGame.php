@@ -4,6 +4,8 @@ namespace Src\Games\Brain\Even\Game;
 
 use function src\Engine\runGame;
 
+use const src\Engine\ROUND;
+
 const TASK = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 function determineParity(int $acceptedNumber): string
@@ -17,9 +19,8 @@ function determineParity(int $acceptedNumber): string
 
 function runEven()
 {
-    require_once __DIR__ . '/../Engine.php';
     $numberAndAnswer = [];
-    for ($i = 0; $i < 3; $i++) {
+    for ($i = 0; $i < ROUND; $i++) {
         $number = rand(0, 99);
         switch (mt_rand(1, 3)) {
             case 1:

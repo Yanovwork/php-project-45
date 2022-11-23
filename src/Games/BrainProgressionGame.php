@@ -4,6 +4,8 @@ namespace  Src\Games\Brain\Progression\Game;
 
 use function src\Engine\runGame;
 
+use const src\Engine\ROUND;
+
 const TASK = 'What number is missing in the progression?';
 
 function makeProgression(int $differenceBetweenNumbers): array
@@ -33,9 +35,8 @@ function makeProgression(int $differenceBetweenNumbers): array
 
 function runTheProgression()
 {
-    require_once __DIR__ . '/../Engine.php';
     $progressionAndResponse = [];
-    for ($i = 0; $i < 3; $i++) {
+    for ($i = 0; $i < ROUND; $i++) {
         $progressionAndResponse = array_merge($progressionAndResponse, makeProgression($i));
     }
     runGame(TASK, $progressionAndResponse);

@@ -5,6 +5,8 @@ namespace src\Engine;
 use function cli\line;
 use function cli\prompt;
 
+const ROUND = 3;
+
 function runGame(string $gameConditions, array $acceptedQuestionAndResponse)
 {
     line('Welcome to the Brain Games!');
