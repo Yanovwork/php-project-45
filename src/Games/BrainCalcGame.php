@@ -33,7 +33,7 @@ function runCalc()
             $expressionAndResult["$firstOperand + $secondOperand"] = makeResult('+', $firstOperand, $secondOperand);
         } elseif ($operator == '-') {
             $expressionAndResult["$firstOperand - $secondOperand"] = makeResult('-', $firstOperand, $secondOperand);
-        } elseif ($operator == '*') {
+        } else {
             $expressionAndResult["$firstOperand * $secondOperand"] = makeResult('*', $firstOperand, $secondOperand);
         }
     }
