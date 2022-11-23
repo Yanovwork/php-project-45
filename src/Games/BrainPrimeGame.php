@@ -20,6 +20,7 @@ function definesPrimeNumber(int $acceptedNumber): bool
 
 function runIsItPrimeNumber()
 {
+    $numbersAndAnswer = [];
     $questions = [];
     $answers = [];
     $randArray = [];
