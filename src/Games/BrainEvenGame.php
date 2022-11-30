@@ -8,12 +8,12 @@ use const src\Engine\ROUND;
 
 const TASK = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-function determineParity(int $acceptedNumber): string
+function isEven(int $acceptedNumber): bool
 {
     if ($acceptedNumber % 2 == 0) {
-        return 'yes';
+        return true;
     } else {
-        return 'no';
+        return false;
     }
 }
 
@@ -22,19 +22,12 @@ function runEven()
     $numberAndAnswer = [];
     for ($i = 0; $i < ROUND; $i++) {
         $number = rand(0, 99);
-        switch (mt_rand(1, 3)) {
-            case 1:
-                $rightResponse = determineParity($number);
-                $numberAndAnswer["$number"] = $rightResponse;
-                break;
-            case 2:
-                $rightResponse = determineParity($number);
-                $numberAndAnswer["$number"] = $rightResponse;
-                break;
-            case 3:
-                $rightResponse = determineParity($number);
-                $numberAndAnswer["$number"] = $rightResponse;
-                break;
+        if (isEven($number)) {
+            $numberAndAnswer["{$i}"]['question'] = $number;
+            $numberAndAnswer["{$i}"]['answer'] = 'yes';
+        } else {
+            $numberAndAnswer["{$i}"]['question'] = $number;
+            $numberAndAnswer["{$i}"]['answer'] = 'no';
         }
     }
     runGame(TASK, $numberAndAnswer);

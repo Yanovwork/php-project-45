@@ -10,6 +10,7 @@ const TASK = 'What number is missing in the progression?';
 
 function makeProgression(int $differenceBetweenNumbers): array
 {
+
     $proposedArray = [];
     $firstRandomNumberAccepted = rand(0, 99);
     $randomLongArray = rand(5, 15);
@@ -37,7 +38,11 @@ function runTheProgression()
 {
     $progressionAndResponse = [];
     for ($i = 0; $i < ROUND; $i++) {
-        $progressionAndResponse = array_merge($progressionAndResponse, makeProgression($i));
+        $progressionInArray = makeProgression($i);
+        foreach ($progressionInArray as $key => $value) {
+            $progressionAndResponse["{$i}"]['question'] = $key;
+            $progressionAndResponse["{$i}"]['answer'] = $value;
+        }
     }
     runGame(TASK, $progressionAndResponse);
 }

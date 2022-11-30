@@ -8,7 +8,7 @@ use const src\Engine\ROUND;
 
 const TASK = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-function definesPrimeNumber(int $acceptedNumber): bool
+function isPrime(int $acceptedNumber): bool
 {
     for ($i = 2; $i < $acceptedNumber; $i++) {
         if ($acceptedNumber % $i == 0) {
@@ -21,20 +21,14 @@ function definesPrimeNumber(int $acceptedNumber): bool
 function runIsItPrimeNumber()
 {
     $numbersAndAnswer = [];
-    $questions = [];
-    $answers = [];
-    $randArray = [];
     for ($i = 0; $i < ROUND; $i++) {
-        $randArray[] = rand(1, 99);
-    }
-    foreach ($randArray as $number) {
-        $questions[] = $number;
-        if (definesPrimeNumber($number) == true) {
-            $answers[] = 'yes';
+        $randNumber = rand(1, 99);
+        $numbersAndAnswer["{$i}"]['question'] = "{$randNumber}";
+        if (isPrime($randNumber) == true) {
+            $numbersAndAnswer["{$i}"]['answer'] = 'yes';
         } else {
-            $answers[] = 'no';
+            $numbersAndAnswer["{$i}"]['answer'] = 'no';
         }
     }
-    $numbersAndAnswer = array_combine($questions, $answers);
     runGame(TASK, $numbersAndAnswer);
 }

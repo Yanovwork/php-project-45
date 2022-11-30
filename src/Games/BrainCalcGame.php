@@ -11,12 +11,16 @@ const TASK = 'What is the result of the expression?';
 function makeResult(string $action, int $firstNumber, int $secondNumber): string
 {
     $result = 0;
-    if ($action == "+") {
-        $result = $firstNumber + $secondNumber;
-    } elseif ($action == "-") {
-        $result = $firstNumber - $secondNumber;
-    } elseif ($action == "*") {
-        $result = $firstNumber * $secondNumber;
+    switch ($action) {
+        case "+":
+            $result = $firstNumber + $secondNumber;
+            break;
+        case "-":
+            $result = $firstNumber - $secondNumber;
+            break;
+        case "*":
+            $result = $firstNumber * $secondNumber;
+            break;
     }
     return $result;
 }
@@ -30,11 +34,14 @@ function runCalc()
         $secondOperand = rand(1, 100);
         $operator = $operators[rand(0, 2)];
         if ($operator == '+') {
-            $expressionAndResult["$firstOperand + $secondOperand"] = makeResult('+', $firstOperand, $secondOperand);
+            $expressionAndResult["{$i}"]['question'] = "{$firstOperand} + {$secondOperand}";
+            $expressionAndResult["{$i}"]['answer'] = makeResult('+', $firstOperand, $secondOperand);
         } elseif ($operator == '-') {
-            $expressionAndResult["$firstOperand - $secondOperand"] = makeResult('-', $firstOperand, $secondOperand);
-        } else {
-            $expressionAndResult["$firstOperand * $secondOperand"] = makeResult('*', $firstOperand, $secondOperand);
+            $expressionAndResult["{$i}"]['question'] = "{$firstOperand} - {$secondOperand}";
+            $expressionAndResult["{$i}"]['answer'] = makeResult('-', $firstOperand, $secondOperand);
+        } elseif ($operator == '*') {
+            $expressionAndResult["{$i}"]['question'] = "{$firstOperand} * {$secondOperand}";
+            $expressionAndResult["{$i}"]['answer'] = makeResult('*', $firstOperand, $secondOperand);
         }
     }
     runGame(TASK, $expressionAndResult);
