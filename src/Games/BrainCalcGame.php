@@ -39,7 +39,7 @@ function runCalc()
         } elseif ($operator == '-') {
             $expressionAndResult["{$i}"]['question'] = "{$firstOperand} - {$secondOperand}";
             $expressionAndResult["{$i}"]['answer'] = makeResult('-', $firstOperand, $secondOperand);
-        } elseif ($operator == '*') {
+        } else {
             $expressionAndResult["{$i}"]['question'] = "{$firstOperand} * {$secondOperand}";
             $expressionAndResult["{$i}"]['answer'] = makeResult('*', $firstOperand, $secondOperand);
         }
