@@ -8,18 +8,15 @@ use const src\Engine\NUMBEROFROUNDS;
 
 const TASK = 'What is the result of the expression?';
 
-function makeResult(string $action, int $firstNumber, int $secondNumber): string
+function makeResult(string $action, int $firstNumber, int $secondNumber): int
 {
     switch ($action) {
         case "+":
             return $firstNumber + $secondNumber;
-            break;
         case "-":
             return $firstNumber - $secondNumber;
-            break;
         case "*":
             return $firstNumber * $secondNumber;
-            break;
     }
 }
 
