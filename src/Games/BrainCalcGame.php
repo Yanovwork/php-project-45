@@ -10,14 +10,21 @@ const TASK = 'What is the result of the expression?';
 
 function makeResult(string $action, int $firstNumber, int $secondNumber): int
 {
+    $result = 0;
     switch ($action) {
         case "+":
-            return $firstNumber + $secondNumber;
+            $result = $firstNumber + $secondNumber;
+            break;
         case "-":
-            return $firstNumber - $secondNumber;
+            $result = $firstNumber - $secondNumber;
+            break;
         case "*":
-            return $firstNumber * $secondNumber;
+            $result = $firstNumber * $secondNumber;
+            break;
+        default:
+            $result = 0;
     }
+    return $result;
 }
 
 function runCalc()
