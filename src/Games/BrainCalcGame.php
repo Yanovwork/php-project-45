@@ -12,16 +12,15 @@ function makeResult(string $action, int $firstNumber, int $secondNumber): string
 {
     switch ($action) {
         case "+":
-            $result = $firstNumber + $secondNumber;
+            return $firstNumber + $secondNumber;
             break;
         case "-":
-            $result = $firstNumber - $secondNumber;
+            return $firstNumber - $secondNumber;
             break;
         case "*":
-            $result = $firstNumber * $secondNumber;
+            return $firstNumber * $secondNumber;
             break;
     }
-    return $result;
 }
 
 function runCalc()
