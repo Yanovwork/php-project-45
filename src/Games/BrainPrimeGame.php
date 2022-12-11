@@ -4,7 +4,7 @@ namespace Src\Games\Brain\Prime\Game;
 
 use function src\Engine\runGame;
 
-use const src\Engine\ROUND;
+use const src\Engine\NUMBEROFROUNDS;
 
 const TASK = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
@@ -21,13 +21,13 @@ function isPrime(int $acceptedNumber): bool
 function runIsItPrimeNumber()
 {
     $numbersAndAnswer = [];
-    for ($i = 0; $i < ROUND; $i++) {
+    for ($i = 0; $i < NUMBEROFROUNDS; $i++) {
         $randNumber = rand(1, 99);
         $numbersAndAnswer["{$i}"]['question'] = "{$randNumber}";
         if (isPrime($randNumber) == true) {
-            $numbersAndAnswer["{$i}"]['answer'] = 'yes';
+            $numbersAndAnswer[$i]['answer'] = 'yes';
         } else {
-            $numbersAndAnswer["{$i}"]['answer'] = 'no';
+            $numbersAndAnswer[$i]['answer'] = 'no';
         }
     }
     runGame(TASK, $numbersAndAnswer);
